@@ -490,56 +490,19 @@ export default function App() {
           {/* Styled Menu Accordion Stream */}
           <nav className="space-y-4 pt-6" id="mobile-accordion-links">
             
-            {/* HOME SECTION */}
+            {/* HOME SECTION (Simple Link) */}
             <div className="border-b border-slate-800/80 pb-3">
               <div
                 className="flex items-center justify-between py-1 cursor-pointer group"
-                onClick={() => setMobileHomeOpen(!mobileHomeOpen)}
+                onClick={() => {
+                  handleNavigate('home');
+                  setMobileMenuOpen(false);
+                }}
               >
                 <span className={`text-[15px] font-sans font-bold tracking-wide transition-colors ${currentSection === 'home' ? 'text-indigo-400' : 'text-slate-100 group-hover:text-indigo-400'}`}>
                   Home
                 </span>
-                <span className="text-indigo-400 text-lg font-mono font-bold select-none pr-1">
-                  {mobileHomeOpen ? '−' : '+'}
-                </span>
               </div>
-              {mobileHomeOpen && (
-                <div className="pl-3 mt-2.5 space-y-2 border-l border-l-slate-800/80 animate-fade-in">
-                  <button
-                    onClick={() => {
-                      handleNavigate('home');
-                      setMobileMenuOpen(false);
-                    }}
-                    className="block w-full text-left text-xs font-medium text-slate-400 hover:text-indigo-400 transition-colors py-1"
-                  >
-                    Main Gateway Overview
-                  </button>
-                  <button
-                    onClick={() => {
-                      handleNavigate('home');
-                      setMobileMenuOpen(false);
-                      setTimeout(() => {
-                        document.getElementById('tech-frameworks')?.scrollIntoView({ behavior: 'smooth' });
-                      }, 100);
-                    }}
-                    className="block w-full text-left text-xs font-medium text-slate-400 hover:text-indigo-400 transition-colors py-1"
-                  >
-                    Tech Stack Frameworks
-                  </button>
-                  <button
-                    onClick={() => {
-                      handleNavigate('home');
-                      setMobileMenuOpen(false);
-                      setTimeout(() => {
-                        document.getElementById('about-quick-profile')?.scrollIntoView({ behavior: 'smooth' });
-                      }, 100);
-                    }}
-                    className="block w-full text-left text-xs font-medium text-slate-400 hover:text-indigo-400 transition-colors py-1"
-                  >
-                    Our Process & Milestones
-                  </button>
-                </div>
-              )}
             </div>
 
             {/* ABOUT SECTION (Simple Link) */}
