@@ -1,0 +1,6 @@
+{
+  "name": "Creative Professional Portfolio",
+  "description": "A modern, responsive portfolio displaying work history, specialized services, an interactive project showcase, a rich technical blog, and a functional contact platform.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
