@@ -11,14 +11,13 @@ interface AboutSectionProps {
 export default function AboutSection({ experiences, skills, onAddSkill }: AboutSectionProps) {
   const [activeCategory, setActiveCategory] = useState<'all' | 'frontend' | 'backend' | 'design' | 'tools'>('all');
   const [customBiography, setCustomBiography] = useState(
-    `We are a results-driven digital solutions company focused on helping businesses grow through technology, design, and innovation. Our goal is simple—to provide smart, reliable, and scalable solutions that solve real business challenges.\n\n` +
+    `We are a results-driven digital solutions company focused on helping businesses grow through technology, design, and innovation. Our goal is simple to provide smart, reliable, and scalable solutions that solve real business challenges.\n\n` +
     `We specialize in website development, custom web applications, automation systems, and digital marketing. By combining strategy, design, and technology, we help businesses improve efficiency, attract customers, and increase revenue.\n\n` +
-    `At our core, we believe technology should work for you—not complicate your operations. That’s why we take time to understand your business, your goals, and your challenges before building solutions tailored specifically to your needs.\n\n` +
-    `We don’t just deliver projects—we build long-term partnerships. From the initial idea to ongoing support, we are committed to helping your business succeed and grow in a competitive digital landscape.\n\n` +
+    `At our core, we believe technology should work for you not complicate your operations. That’s why we take time to understand your business, your goals, and your challenges before building solutions tailored specifically to your needs.\n\n` +
+    `We don’t just deliver projects we build long-term partnerships. From the initial idea to ongoing support, we are committed to helping your business succeed and grow in a competitive digital landscape.\n\n` +
     `Our Mission\nTo empower businesses with innovative digital solutions that drive growth, efficiency, and long-term success.\n\n` +
     `Our Vision\nTo be a trusted technology partner for businesses looking to scale and thrive in the digital world.`
   );
-  const [isEditingBio, setIsEditingBio] = useState(false);
 
   // New skill form fields
   const [newSkillName, setNewSkillName] = useState('');
@@ -56,54 +55,33 @@ export default function AboutSection({ experiences, skills, onAddSkill }: AboutS
           </div>
 
           <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-xs relative">
-            <div className="absolute top-4 right-4">
-              <button
-                onClick={() => setIsEditingBio(!isEditingBio)}
-                className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 bg-indigo-50 px-2.5 py-1 rounded-sm"
-              >
-                {isEditingBio ? 'Save Change' : 'Edit Text'}
-              </button>
-            </div>
-
-            {isEditingBio ? (
-              <div className="space-y-3 pt-4">
-                <textarea
-                  value={customBiography}
-                  onChange={(e) => setCustomBiography(e.target.value)}
-                  className="w-full min-h-[220px] text-sm text-slate-800 bg-slate-50 border border-slate-200 rounded-lg p-3 font-sans focus:outline-hidden focus:ring-1 focus:ring-indigo-500"
-                  placeholder="Rewrite biography..."
-                />
-                <p className="text-[11px] text-slate-400">Feel free to customize this text directly in our interactive preview.</p>
-              </div>
-            ) : (
-              <div className="space-y-4 text-slate-600 font-sans leading-relaxed text-sm md:text-base">
-                {customBiography.split('\n\n').map((para, i) => {
-                  if (para.startsWith('Our Mission')) {
-                    const lines = para.split('\n');
-                    return (
-                      <div key={i} className="pt-4 border-t border-slate-100">
-                        <h3 className="text-sm font-black uppercase font-mono tracking-wider text-indigo-600 mb-1">{lines[0]}</h3>
-                        {lines[1] && <p className="text-slate-600 font-sans">{lines[1]}</p>}
-                      </div>
-                    );
-                  }
-                  if (para.startsWith('Our Vision')) {
-                    const lines = para.split('\n');
-                    return (
-                      <div key={i} className="pt-4 border-t border-slate-100">
-                        <h3 className="text-sm font-black uppercase font-mono tracking-wider text-indigo-600 mb-1">{lines[0]}</h3>
-                        {lines[1] && <p className="text-slate-600 font-sans">{lines[1]}</p>}
-                      </div>
-                    );
-                  }
+            <div className="space-y-4 text-slate-600 font-sans leading-relaxed text-sm md:text-base">
+              {customBiography.split('\n\n').map((para, i) => {
+                if (para.startsWith('Our Mission')) {
+                  const lines = para.split('\n');
                   return (
-                    <p key={i} className="text-slate-600 font-sans">
-                      {para}
-                    </p>
+                    <div key={i} className="pt-4 border-t border-slate-100">
+                      <h3 className="text-sm font-black uppercase font-mono tracking-wider text-indigo-600 mb-1">{lines[0]}</h3>
+                      {lines[1] && <p className="text-slate-600 font-sans">{lines[1]}</p>}
+                    </div>
                   );
-                })}
-              </div>
-            )}
+                }
+                if (para.startsWith('Our Vision')) {
+                  const lines = para.split('\n');
+                  return (
+                    <div key={i} className="pt-4 border-t border-slate-100">
+                      <h3 className="text-sm font-black uppercase font-mono tracking-wider text-indigo-600 mb-1">{lines[0]}</h3>
+                      {lines[1] && <p className="text-slate-600 font-sans">{lines[1]}</p>}
+                    </div>
+                  );
+                }
+                return (
+                  <p key={i} className="text-slate-600 font-sans">
+                    {para}
+                  </p>
+                );
+              })}
+            </div>
           </div>
         </div>
 
